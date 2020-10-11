@@ -1,0 +1,39 @@
+{
+  "name": "project-sahil-au7",
+  "version": "1.0.0",
+  "description": "Educate India",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon --exec babel-node api/server",
+    "start": "npm run build && node dist/server",
+    "build": "rimraf dist/ && babel api/ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attainu/project-sahil-au7.git"
+  },
+  "author": "Sahil and Utkarsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attainu/project-sahil-au7/issues"
+  },
+  "homepage": "https://github.com/attainu/project-sahil-au7#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.6",
+    "nodemailer": "^6.4.11",
+    "rimraf": "^2.6.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.3"
+  }
+}
