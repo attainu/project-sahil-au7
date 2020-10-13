@@ -1,10 +1,8 @@
-import User from '../models/userModel'
+import User from "../models/userModel";
 import service from "../services/userServices";
-import {
-  handleErrors
-} from "../errorHandlers/ErrorHandlers";
-import passwordResetService from '../services/passwordResetService'
-import logout from '../services/logoutService'
+import { handleErrors } from "../errorHandlers/ErrorHandlers";
+import passwordResetService from "../services/passwordResetService";
+import logout from "../services/logoutService";
 
 const controller = {};
 
@@ -16,7 +14,7 @@ controller.signup = async (req, res) => {
 
     res.status(201).json(user);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
@@ -27,7 +25,7 @@ controller.login = async (req, res) => {
 
     res.status(201).json(user);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
@@ -39,7 +37,7 @@ controller.get = async (req, res) => {
 
     res.status(201).json(user);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
@@ -50,7 +48,7 @@ controller.update = async (req, res) => {
 
     res.status(201).json(user);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
@@ -61,30 +59,30 @@ controller.forgotPassword = async (req, res) => {
 
     res.status(201).json(user);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
 //RESET PASSWORD
 controller.resetPassword = async (req, res) => {
   try {
-    const message = await passwordResetService.resetPassword(User, req)
+    const message = await passwordResetService.resetPassword(User, req);
 
     res.status(201).json(message);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
 };
 
 //Logout
 controller.logout = async (req, res) => {
   try {
-    const message = await logout(User, req)
+    const message = await logout(User, req);
 
-    res.status(200).json(message)
+    res.status(200).json(message);
   } catch (e) {
-    handleErrors(e, res)
+    handleErrors(e, res);
   }
-}
+};
 
 export default controller;

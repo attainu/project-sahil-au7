@@ -1,10 +1,9 @@
 /**
- * This file contains all the vendor routes
+ * This file contains all the User routes
  */
 import express from "express";
 import controller from "../controller/userController";
 import validator from "../validators/userValidators";
-import validator2 from "../validators/passwordResetValidator";
 import { handleValidationErrors } from "../errorHandlers/ErrorHandlers";
 import authorize from "../middleware/auth";
 
