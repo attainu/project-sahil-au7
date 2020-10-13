@@ -29,9 +29,10 @@ const userModel = new Schema({
     type: Date,
     default: Date.now(),
   },
-  cart: [
+  myCourses: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "course",
     },
   ],
   passwordResetToken: {
@@ -44,6 +45,14 @@ const userModel = new Schema({
     type: Boolean,
     default: false,
   },
+});
+
+userModel.pre(/^find/, function (next) {
+  this.populate({
+    path: "course",
+    select: "-__v",
+  });
+  next();
 });
 
 export default new model("user", userModel);

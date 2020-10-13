@@ -1,4 +1,5 @@
 import User from "../models/userModel";
+import Course from "../models/courseModel";
 import encryptionService from "../services/encryptionService";
 import jwt from "../services/authorizationService";
 import sendEmail from "../utilities/email";
@@ -24,10 +25,10 @@ services.signup = (data) =>
       //Generate Token
       const token = await jwt.generate(user);
 
-      const message = `Welcome to Sisyphus Family,${user.name} !\nThanks for creating a account at Sisyphus.\nPlease take a look at our Products and Services. `;
+      const message = `Welcome to Educate India Family,${user.name} !\nThanks for creating a account at Educate India.\nPlease take a look at the Courses we Provide . `;
       await sendEmail({
         email: user.email,
-        subject: "Welcome to Sisyphus Family ! 😊",
+        subject: "Welcome to Educate India Family ! 😊",
         message,
       });
 
@@ -112,6 +113,43 @@ services.updateUser = (_id, data) =>
         }
       );
 
+      res(user);
+    } catch (e) {
+      console.log(e);
+      rej(e);
+    }
+  });
+
+//==========================================Enroll Course Service==========================================
+
+services.enrollCourse = (_id, id) =>
+  new Promise(async (res, rej) => {
+    try {
+      const course = await Course.findById(id);
+
+      const myCourse = await User.findOneAndUpdate(
+        {
+          _id,
+        },
+        {
+          $push: {
+            myCourses: course,
+          },
+        }
+      );
+
+      res(course);
+    } catch (e) {
+      console.log(e);
+      rej(e);
+    }
+  });
+
+//==========================================Delete Course Service==========================================
+services.deleteMyCourse = (_id, id) =>
+  new Promise(async (res, rej) => {
+    try {
+      const user = await User.findByIdAndDelete(_id, {});
       res(user);
     } catch (e) {
       console.log(e);

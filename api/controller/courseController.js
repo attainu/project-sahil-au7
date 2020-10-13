@@ -50,7 +50,7 @@ controller.update = async (req, res) => {
   }
 };
 
-//Delete Course
+//DELETE Course
 controller.deleteCourse = async (req, res) => {
   try {
     //Delete a course
