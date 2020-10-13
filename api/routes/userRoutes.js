@@ -40,15 +40,5 @@ router.patch(
 //GET
 router.get("/logout", authorize, controller.logout);
 
-//===========================================================================================================
-
-//POST Enroll Course
-router.post("/course/:id", authorize, controller.enrollCourse);
-
-//GET Get Course details
-// router.get("/:id", controller.getMyCourses);
-
-//DELETE Delete Course
-router.delete("/course/:id", controller.deleteMyCourse);
 
 export default router;

@@ -3,14 +3,15 @@
  */
 import express from "express";
 import controller from "../controller/courseController";
-// import validator from "../validators/userValidators";
-// import { handleValidationErrors } from "../errorHandlers/ErrorHandlers";
+import validator from "../validators/courseValidator";
+import { handleValidationErrors } from "../errorHandlers/ErrorHandlers";
 // import authorize from "../middleware/auth";
 
 const router = express.Router();
 
 //POST Create Course
-router.post("/create", controller.create);
+router.post("/create", validator.create,  handleValidationErrors
+,controller.create);
 
 //GET Get Course details
 router.get("/:id", controller.get);
@@ -19,7 +20,8 @@ router.get("/:id", controller.get);
 router.get("/", controller.getAll);
 
 //UPDATE Course Details
-router.patch("/:id", controller.update);
+router.patch("/:id",validator.update,  handleValidationErrors
+, controller.update);
 
 //DELETE Delete Course
 router.delete("/:id", controller.deleteCourse);

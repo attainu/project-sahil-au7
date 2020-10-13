@@ -118,7 +118,7 @@ controller.getMyCourses = async (req, res) => {
 controller.deleteMyCourse = async (req, res) => {
   try {
     //Delete My Course
-    const user = await service.getMyCourse(req._id, req.params.id);
+    const user = await service.deleteMyCourse(req._id, req.params.id);
 
     res.status(201).json(user);
   } catch (e) {
