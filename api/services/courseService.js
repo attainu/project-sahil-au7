@@ -54,6 +54,9 @@ services.updateCourse = (_id, data) =>
         _id,
         {
           ...data,
+          $set: {
+            lastUpdated: Date.now(), //Update login_at
+          },
         },
         {
           new: true,

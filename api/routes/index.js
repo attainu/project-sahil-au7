@@ -8,6 +8,7 @@ import userRoutes from "../routes/userRoutes";
 import passwordResetRoutes from "./passwordResetRoutes";
 import courseRoutes from "../routes/courseRoutes";
 import myCourseRoutes from "../routes/myCourseRoutes";
+import notesRoutes from "./notesRoutes"
 
 
 import authorize from "../middleware/auth";
@@ -22,6 +23,10 @@ routes.use("/course", courseRoutes);
 
 //User Course Routes
 routes.use("/user/course", myCourseRoutes);
+
+//Notes Routes
+routes.use("/user/course/notes", notesRoutes);
+
 
 //User password reset
 routes.use("/user/passwordReset", passwordResetRoutes);

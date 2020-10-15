@@ -11,7 +11,6 @@ const controller = {}
 controller.enrollCourse = async (req, res) => {
   try {
     //Add to My Course
-    console.log(req.params.id);
     const course = await service.enrollCourse(req._id, req.params.id);
 
     res.status(201).json(course);

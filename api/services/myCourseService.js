@@ -10,9 +10,15 @@ const services = {};
 services.enrollCourse = (_id, id) =>
   new Promise(async (res, rej) => {
     try {
-      const course = await Course.findById(id);
-
-      const myCourse = await User.findOneAndUpdate(
+      const course = await Course.findById(id)
+      const check = course.users.filter((i) => _id == i)
+      if (check.length==0) {
+        await Course.findByIdAndUpdate(id, { $push: { users: _id } }, { new: true });
+        const newEnrolled = course.enrolled + 1
+        course.enrolled = newEnrolled;
+        await course.save();
+        
+        const myCourse = await User.findOneAndUpdate(
         {
           _id,
         },
@@ -22,8 +28,11 @@ services.enrollCourse = (_id, id) =>
           },
         }
       );
+      }
 
-      res(course);
+      const newCourse = await Course.findById(id)
+      
+      res(newCourse);
     } catch (e) {
       console.log(e);
       rej(e);

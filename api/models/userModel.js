@@ -45,6 +45,10 @@ const userModel = new Schema({
     type: Boolean,
     default: false,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userModel.pre(/^find/, function (next) {

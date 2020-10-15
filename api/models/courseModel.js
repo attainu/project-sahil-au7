@@ -13,6 +13,12 @@ const courseModel = new Schema({
     type: Number,
     default: 4.9,
   },
+  users: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
   enrolled: {
     type: Number,
     default: 0,
