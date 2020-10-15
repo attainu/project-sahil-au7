@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-//POST Create Notes
+//POST Create Note
 router.post(
     "/:id",
     authorize,
