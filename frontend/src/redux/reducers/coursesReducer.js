@@ -1,6 +1,7 @@
 const initialState = {
   courses: [],
   courseDetails: {},
+  viewCourse: {},
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -15,6 +16,12 @@ const courseReducer = (state = initialState, action) => {
       return {
         ...state,
         courseDetails: action.payload,
+      };
+
+    case "VIEW_COURSE":
+      return {
+        ...state,
+        viewCourse: action.payload,
       };
 
     default:

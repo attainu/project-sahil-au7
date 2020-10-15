@@ -9,7 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-
+import { viewCourse } from "../redux/actions/courseAction";
+import { useHistory, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -19,13 +20,18 @@ const useStyles = makeStyles({
 
 export default function CourseDetails(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const store = useSelector((store) => store.coursesRoot);
 
-  console.log(store.courseDetails,"---")
+  const onCardClick = (e) => {
+    e.preventDefault();
+    dispatch(viewCourse(store.courseDetails, history));
+  };
 
   return (
     <Container maxWidth="md">
-      <Card maxWidth style={{ margin: "10px" }}>
+      <Card maxWidth style={{ margin: "10px" }} onClick={onCardClick}>
         <CardActionArea>
           <CardMedia
             component="img"

@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
+import { useDispatch, useSelector } from "react-redux";
 
 import Player from "./Player";
 
@@ -28,6 +29,9 @@ export default function Course() {
   }));
 
   const classes = useStyles();
+  const store = useSelector((store) => store.coursesRoot);
+
+  console.log(store, "player");
 
   return (
     <div className={classes.root}>

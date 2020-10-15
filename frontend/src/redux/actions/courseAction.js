@@ -8,9 +8,15 @@ export const getCoursesType = (data) => {
 };
 
 export const getCourseDetailsType = (data) => {
-  console.log(data , "--------------");
   return {
     type: "COURSE_DETAILS",
+    payload: data,
+  };
+};
+
+export const viewCourseType = (data) => {
+  return {
+    type: "VIEW_COURSE",
     payload: data,
   };
 };
@@ -60,5 +66,17 @@ export const getCourseDetails = (id, history) => {
       });
       console.log(err.message);
     }
+  };
+};
+
+/**
+ * View course
+ *
+ * @param {history} history
+ */
+export const viewCourse = (data, history) => {
+  return async (dispatch) => {
+    dispatch(viewCourseType(data));
+    history.push("/course");
   };
 };
