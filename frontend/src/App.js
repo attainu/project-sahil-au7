@@ -3,8 +3,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header.js";
 import Home from "./components/Home";
+import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Player from "./components/Player";
+import Course from "./components/Course";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -12,9 +15,11 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={LandingPage} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
+        <Route path="/course" exact component={Course} />
+        <Route path="/player" exact component={Player} />
       </Switch>
     </Router>
   );
