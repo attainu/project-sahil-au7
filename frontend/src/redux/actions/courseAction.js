@@ -8,6 +8,7 @@ export const getCoursesType = (data) => {
 };
 
 export const getCourseDetailsType = (data) => {
+  console.log(data , "--------------");
   return {
     type: "COURSE_DETAILS",
     payload: data,
@@ -16,8 +17,8 @@ export const getCourseDetailsType = (data) => {
 
 /**
  * Get all courses
- * 
- * @param {history} history 
+ *
+ * @param {history} history
  */
 export const getCourses = (history) => {
   return async (dispatch) => {
@@ -25,8 +26,6 @@ export const getCourses = (history) => {
       const { data } = await axios.get(
         "https://educate-india.herokuapp.com/course"
       );
-
-      console.log(data);
 
       dispatch(getCoursesType(data));
     } catch (err) {
@@ -45,15 +44,15 @@ export const getCourses = (history) => {
  *
  * @param {course id} id
  */
-export const getCourseDetails = (id) => {
+export const getCourseDetails = (id, history) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
         `https://educate-india.herokuapp.com/course/${id}`
       );
 
-      console.log(data);
       dispatch(getCourseDetailsType(data));
+      history.push("/course-details");
     } catch (err) {
       dispatch({
         type: "SET_REGISTER_ERRORS",

@@ -25,7 +25,7 @@ export default function AllCourses() {
    */
   function onClick(e) {
     e.preventDefault();
-    dispatch(getCourseDetails(this));
+    dispatch(getCourseDetails(this, history));
   }
 
   return (

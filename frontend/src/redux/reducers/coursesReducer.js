@@ -1,4 +1,3 @@
-
 const initialState = {
   courses: [],
   courseDetails: {},

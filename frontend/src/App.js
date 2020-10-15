@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Player from "./components/Player";
 import Course from "./components/Course";
+import CourseDetails from "./components/CourseDetails";
 import AllCourses from "./components/AllCourses";
 import PrivateRoute from "./components/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -23,6 +24,7 @@ function App() {
         <PrivateRoute path="/course" exact component={Course} />
         <PrivateRoute path="/all-courses" exact component={AllCourses} />
         <PrivateRoute path="/player" exact component={Player} />
+        <PrivateRoute path="/course-details" exact component={CourseDetails} />
       </Switch>
     </Router>
   );
