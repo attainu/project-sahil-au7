@@ -4,7 +4,7 @@ import { handleErrors } from "../errorHandlers/ErrorHandlers";
 
 const controller = {};
 
-//UPDATE User Details
+//UPDATE Notes
 controller.update = async (req, res) => {
     try {
         const notes = await service.updateUser(req._id, req.body);
