@@ -1,30 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { userRegister } from "../redux/actions/userAction";
+import { useHistory, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,6 +38,23 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup() {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [contact, setContact] = useState("");
+  const [errors, setErrors] = useState({});
+
+  /**
+   * Handle form submit
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(userRegister({ name, email, password, contact }, history));
+    // setIsLoading(true);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,33 +65,26 @@ export default function Signup() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
+                onChange={(e) => setName(e.target.value)}
+                value={name}
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="name"
+                label="Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 variant="outlined"
                 required
                 fullWidth
@@ -97,6 +96,8 @@ export default function Signup() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 variant="outlined"
                 required
                 fullWidth
@@ -107,10 +108,18 @@ export default function Signup() {
                 autoComplete="current-password"
               />
             </Grid>
+
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+              <TextField
+                onChange={(e) => setContact(e.target.value)}
+                value={contact}
+                variant="outlined"
+                required
+                fullWidth
+                name="contact"
+                label="Contact"
+                type="text"
+                id="contact"
               />
             </Grid>
           </Grid>
@@ -132,9 +141,6 @@ export default function Signup() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }
