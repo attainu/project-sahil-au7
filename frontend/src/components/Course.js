@@ -31,13 +31,15 @@ export default function Course() {
   const classes = useStyles();
   const store = useSelector((store) => store.coursesRoot);
 
-  console.log(store, "player");
-
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      key={store.viewCourse._id}
+      id={store.viewCourse._id}
+    >
       <Grid container spacing={3}>
         <Grid item xs={8}>
-          <Player />
+          <Player link={store.viewCourse.link} />
         </Grid>
         <Grid item xs={4}>
           <TextField

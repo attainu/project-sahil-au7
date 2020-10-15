@@ -1,26 +1,43 @@
 import React from "react";
 import YouTube from "react-youtube";
 
-class Player extends React.Component {
-  render() {
-    const opts = {
-      height: "500px",
-      width: "100%",
-      playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        autoplay: 1,
-      },
-    };
+// export default function Player(props){
+//     const opts = {
+//       height: "500px",
+//       width: "100%",
+//       playerVars: {
+//         // https://developers.google.com/youtube/player_parameters
+//         autoplay: 1,
+//       },
+//     };
 
-    return (
-      <YouTube videoId="k1v7_zScivQ" opts={opts} onReady={this._onReady} />
-    );
-  }
+//     console.log()
 
-  _onReady(event) {
+//     return (
+//       <YouTube videoId="k1v7_zScivQ" />
+//     );
+//   }
+
+export default function Player(props) {
+  const opts = {
+    height: "500px",
+    width: "100%",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
+
+  function _onReady(event) {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
   }
-}
 
-export default Player;
+  return (
+    <YouTube
+      videoId={props.link.map((v) => v.split("&")[0])[0]}
+      opts={opts}
+      onReady={_onReady}
+    />
+  );
+}
