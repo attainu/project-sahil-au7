@@ -168,6 +168,12 @@ export default function Header() {
           </Button>
 
           <Button edge="start" color="inherit" aria-label="menu">
+            <Link to="/all-courses">
+              <li>All Courses</li>
+            </Link>
+          </Button>
+
+          <Button edge="start" color="inherit" aria-label="menu">
             <Link to="/course">
               <li>Course</li>
             </Link>

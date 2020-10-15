@@ -20,7 +20,8 @@ function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
-        <PrivateRoute path="/course" exact component={AllCourses} />
+        <PrivateRoute path="/course" exact component={Course} />
+        <PrivateRoute path="/all-courses" exact component={AllCourses} />
         <PrivateRoute path="/player" exact component={Player} />
       </Switch>
     </Router>

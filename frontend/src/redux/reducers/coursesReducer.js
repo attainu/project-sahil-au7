@@ -1,5 +1,7 @@
+
 const initialState = {
   courses: [],
+  courseDetails: {},
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -8,6 +10,12 @@ const courseReducer = (state = initialState, action) => {
       return {
         ...state,
         courses: action.payload,
+      };
+
+    case "COURSE_DETAILS":
+      return {
+        ...state,
+        courseDetails: action.payload,
       };
 
     default:

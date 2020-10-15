@@ -26,7 +26,12 @@ export default function MediaCard1(props) {
   });
 
   return (
-    <div style={{ margin: "10px" }}>
+    <div
+      style={{ margin: "10px" }}
+      onClick={props.onClick.bind(props.id)}
+      key={props.key}
+      id={props.id}
+    >
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -36,7 +41,7 @@ export default function MediaCard1(props) {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-             {props.description}
+              {props.description}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {props.rating}
@@ -45,10 +50,7 @@ export default function MediaCard1(props) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
+            Enroll
           </Button>
         </CardActions>
       </Card>
