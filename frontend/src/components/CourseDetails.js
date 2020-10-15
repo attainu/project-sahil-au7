@@ -11,10 +11,14 @@ import { Container } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { viewCourse } from "../redux/actions/courseAction";
 import { useHistory, Link } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
+  },
+  links: {
+    flexGrow: 1,
   },
 });
 
@@ -26,8 +30,21 @@ export default function CourseDetails(props) {
 
   const onCardClick = (e) => {
     e.preventDefault();
-    dispatch(viewCourse(store.courseDetails, history));
+    dispatch(
+      viewCourse(
+        store.courseDetails,
+        store.courseDetails.link.map((v) => v.split("&")[0])[0],
+        history
+      )
+    );
   };
+
+  function onClickLink(e) {
+    e.preventDefault();
+    dispatch(viewCourse(store.courseDetails, this, history));
+  }
+
+  var links = store.courseDetails.link.map((v) => v.split("&")[0]);
 
   return (
     <Container maxWidth="md">
@@ -37,7 +54,9 @@ export default function CourseDetails(props) {
             component="img"
             alt="Contemplative Reptile"
             height="440"
-            image="https://loremflickr.com/320/240"
+            image={` https://img.youtube.com/vi/${
+              store.courseDetails.link.map((v) => v.split("&")[0])[0]
+            }/mqdefault.jpg`}
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -54,6 +73,27 @@ export default function CourseDetails(props) {
             Enroll
           </Button>
         </CardActions>
+      </Card>
+
+      <Card>
+        <div className={classes.links} style={{ display: "inline-block" }}>
+          <Grid container spacing={4}>
+            <Grid xs={6} sm={3}>
+              {links.map((element) => (
+                <CardMedia
+                  style={{ padding: "10px" }}
+                  component="img"
+                  alt="Contemplative Reptile"
+                  height="100"
+                  width="100"
+                  image={` https://img.youtube.com/vi/${element}/mqdefault.jpg`}
+                  title="Contemplative Reptile"
+                  onClick={onClickLink.bind(element)}
+                />
+              ))}
+            </Grid>
+          </Grid>
+        </div>
       </Card>
     </Container>
   );

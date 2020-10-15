@@ -36,15 +36,15 @@ export default function MediaCard1(props) {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://loremflickr.com/320/240"
+            image={`https://img.youtube.com/vi/${props.videoId}/mqdefault.jpg`}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {props.description}
+              {props.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.rating}
+              {props.description}
             </Typography>
           </CardContent>
         </CardActionArea>

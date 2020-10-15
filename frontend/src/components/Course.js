@@ -39,7 +39,7 @@ export default function Course() {
     >
       <Grid container spacing={3}>
         <Grid item xs={8}>
-          <Player link={store.viewCourse.link} />
+          <Player id={store.viewCourse.videoId} />
         </Grid>
         <Grid item xs={4}>
           <TextField

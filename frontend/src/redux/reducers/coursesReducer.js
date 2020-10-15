@@ -2,6 +2,7 @@ const initialState = {
   courses: [],
   courseDetails: {},
   viewCourse: {},
+  videoId : {}
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -22,7 +23,7 @@ const courseReducer = (state = initialState, action) => {
       return {
         ...state,
         viewCourse: action.payload,
-      };
+      };    
 
     default:
       return state;

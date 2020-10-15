@@ -34,10 +34,11 @@ export default function AllCourses() {
         <Grid item xs={4} key={data._id} id={data._id}>
           <Card
             onClick={onClick}
-            descripton={data.description}
+            title={data.title}
+            videoId={data.link.map((v) => v.split("&")[0])[0]}
+            description={data.description}
             key={data._id}
             id={data._id}
-            rating={data.rating}
           />
         </Grid>
       ))}

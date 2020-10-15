@@ -14,10 +14,10 @@ export const getCourseDetailsType = (data) => {
   };
 };
 
-export const viewCourseType = (data) => {
+export const viewCourseType = (data, videoId) => {
   return {
     type: "VIEW_COURSE",
-    payload: data,
+    payload: { ...data, videoId },
   };
 };
 
@@ -74,9 +74,9 @@ export const getCourseDetails = (id, history) => {
  *
  * @param {history} history
  */
-export const viewCourse = (data, history) => {
+export const viewCourse = (data, videoId, history) => {
   return async (dispatch) => {
-    dispatch(viewCourseType(data));
+    dispatch(viewCourseType(data, videoId));
     history.push("/course");
   };
 };

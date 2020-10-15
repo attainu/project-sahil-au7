@@ -35,7 +35,7 @@ export default function Player(props) {
 
   return (
     <YouTube
-      videoId={props.link.map((v) => v.split("&")[0])[0]}
+      videoId={props.id}
       opts={opts}
       onReady={_onReady}
     />
