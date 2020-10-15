@@ -1,5 +1,4 @@
 import Notes from "../models/notesModel";
-import encryptionService from "../services/encryptionService";
 
 const services = {};
 
@@ -7,7 +6,7 @@ const services = {};
 services.getNotes = (_id) =>
   new Promise(async (res, rej) => {
     try {
-      const user = await User.findById(_id);
+      const user = await Notes.findById(_id);
 
       res(user);
     } catch (e) {
@@ -22,12 +21,8 @@ services.updateNotes = (_id, data) =>
     try {
 
       //Updating the hash to database
-      const notes = await User.findByIdAndUpdate(
+      const notes = await Notes.findByIdAndUpdate(
         _id,
-        {
-          password: hash,
-          ...remData,
-        },
         {
           returnNewDocument: true,
         }

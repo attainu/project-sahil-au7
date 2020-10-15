@@ -5,9 +5,9 @@ import { handleErrors } from "../errorHandlers/ErrorHandlers";
 const controller = {};
 
 //UPDATE Notes
-controller.update = async (req, res) => {
+controller.updateNotes = async (req, res) => {
     try {
-        const notes = await service.updateUser(req._id, req.body);
+        const notes = await service.updateNotes(req._id, req.body);
 
         res.status(201).json(notes);
     } catch (e) {
@@ -19,7 +19,7 @@ controller.update = async (req, res) => {
 controller.getNotes = async (req, res) => {
   try {
     //Get Course
-    const notes = await service.getMyCourse(req._id);
+    const notes = await service.getNotes(req._id);
 
     res.status(201).json(notes);
   } catch (e) {
