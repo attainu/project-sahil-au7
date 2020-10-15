@@ -4,10 +4,22 @@ import { handleErrors } from "../errorHandlers/ErrorHandlers";
 
 const controller = {};
 
+
+//UPDATE Notes
+controller.createNotes = async (req, res) => {
+    try {
+        const notes = await service.createNotes(req, req.body,req.params.id);
+
+        res.status(201).json(notes);
+    } catch (e) {
+        handleErrors(e, res);
+    }
+};
+
 //UPDATE Notes
 controller.updateNotes = async (req, res) => {
     try {
-        const notes = await service.updateNotes(req._id, req.body);
+        const notes = await service.updateNotes(req.params.id, req.body);
 
         res.status(201).json(notes);
     } catch (e) {

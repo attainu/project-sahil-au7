@@ -47,6 +47,8 @@ services.getMyCourseSpecific = (_id) =>
     try {
       const course = await Course.findById(_id);
 
+      req.course_id = course._id;
+
       res(course);
     } catch (e) {
       console.log(e);

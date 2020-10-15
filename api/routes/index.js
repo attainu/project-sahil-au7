@@ -27,7 +27,6 @@ routes.use("/user/course", myCourseRoutes);
 //Notes Routes
 routes.use("/user/course/notes", notesRoutes);
 
-
 //User password reset
 routes.use("/user/passwordReset", passwordResetRoutes);
 

@@ -14,7 +14,6 @@ token.generate = (data) =>
         created_at: data.created_at,
         login_at: data.login_at,
       };
-      console.log(obj);
 
       const token = jwt.sign(
         {

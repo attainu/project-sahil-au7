@@ -5,11 +5,7 @@ const notesModel = new Schema({
     type: String,
     default:""
   },
-  created_at: {
-    type: Date,
-    default: Date.now(),
-  },
-  courses: [
+  course: [
     {
       type: Schema.Types.ObjectId,
       ref: "course",
@@ -21,6 +17,10 @@ const notesModel = new Schema({
       ref: "user",
     },
   ],
+  created_at: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 

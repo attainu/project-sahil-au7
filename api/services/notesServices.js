@@ -1,19 +1,34 @@
 import Notes from "../models/notesModel";
 
 const services = {};
+
+
+//==========================================Create Notes Detail Service==========================================
+
+services.createNotes = (req,data,id) =>
+  new Promise(async (res, rej) => {
+      try {
+
+          const notes = await new Notes({
+              user: req._id,
+              course: id,
+              ...data
+          }).save();
+
+      res(notes);
+    } catch (e) {
+      console.log(e);
+      rej(e);
+    }
+  });
+
 //==========================================Update Notes Detail Service==========================================
 
-services.updateNotes = (_id, data) =>
+services.updateNotes = (id,data) =>
   new Promise(async (res, rej) => {
-    try {
+      try {
 
-      //Updating the hash to database
-      const notes = await Notes.findByIdAndUpdate(
-        _id,
-        {
-          returnNewDocument: true,
-        }
-      );
+        const notes = await Notes.findByIdAndUpdate(id, { ...data }, {new: true})
 
       res(notes);
     } catch (e) {
