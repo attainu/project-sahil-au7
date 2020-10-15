@@ -11,7 +11,7 @@ const router = express.Router();
 router.patch(
     "/update",
     authorize,
-  controller.update
+  controller.updateNotes
 );
 
 // //POST Delete Login
@@ -21,7 +21,7 @@ router.patch(
 //   controller.delete
 // );
 
-//GET Get USER details
-router.get("/", authorize, controller.get);
+//GET Get Notes
+router.get("/:id", authorize, controller.getNotes);
 
 export default router;

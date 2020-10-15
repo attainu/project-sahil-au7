@@ -18,8 +18,8 @@ controller.updateNotes = async (req, res) => {
 //Get Notes
 controller.getNotes = async (req, res) => {
   try {
-    //Get Course
-    const notes = await service.getNotes(req._id);
+    //Get Notes
+    const notes = await service.getNotes(req.params.id);
 
     res.status(201).json(notes);
   } catch (e) {
