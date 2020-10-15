@@ -23,7 +23,7 @@ router.patch(
   controller.updateNotes
 );
 
-//GET Get Notes
+//GET Get Note
 router.get("/:id", authorize, controller.getNotes);
 
 export default router;
