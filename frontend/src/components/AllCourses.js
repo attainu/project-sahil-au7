@@ -18,8 +18,8 @@ export default function AllCourses() {
   useEffect(() => {
     dispatch(getCourses(history));
 
-    //Display progress bar
-    dispatch(isVisible(true));
+    // //Display progress bar
+    // dispatch(isVisible(true));
   }, []);
 
   /**
@@ -35,7 +35,7 @@ export default function AllCourses() {
   return (
     <Grid container>
       {store.courses.map((data) => (
-        <Grid item xs={4} key={data._id} id={data._id}>
+        <Grid item key={data._id} id={data._id}>
           <Card
             onClick={onClick}
             title={data.title}

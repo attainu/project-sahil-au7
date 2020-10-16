@@ -30,12 +30,13 @@ export const viewCourseType = (data, videoId) => {
 export const getCourses = (history) => {
   return async (dispatch) => {
     try {
+      dispatch(progressVisibleType(true));
+
       const { data } = await axios.get(
         "https://educate-india.herokuapp.com/course"
       );
 
       dispatch(getCoursesType(data));
-      dispatch(progressVisibleType(false));
     } catch (err) {
       console.log(err);
       dispatch({
@@ -43,6 +44,8 @@ export const getCourses = (history) => {
         payload: err.response.data,
       });
       console.log("Error in userRegister Action", err.message);
+    } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };
@@ -55,6 +58,8 @@ export const getCourses = (history) => {
 export const getCourseDetails = (id, history) => {
   return async (dispatch) => {
     try {
+      dispatch(progressVisibleType(true));
+
       const { data } = await axios.get(
         `https://educate-india.herokuapp.com/course/${id}`
       );
@@ -67,6 +72,8 @@ export const getCourseDetails = (id, history) => {
         payload: err.response.data,
       });
       console.log(err.message);
+    } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };
@@ -78,7 +85,11 @@ export const getCourseDetails = (id, history) => {
  */
 export const viewCourse = (data, videoId, history) => {
   return async (dispatch) => {
+    dispatch(progressVisibleType(true));
+
     dispatch(viewCourseType(data, videoId));
     history.push("/course");
+
+    dispatch(progressVisibleType(false));
   };
 };

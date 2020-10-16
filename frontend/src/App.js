@@ -23,7 +23,6 @@ function App() {
         <Route path="/login" exact component={Login} />
         <PrivateRoute path="/course" exact component={Course} />
         <PrivateRoute path="/all-courses" exact component={AllCourses} />
-        <PrivateRoute path="/player" exact component={Player} />
         <PrivateRoute path="/course-details" exact component={CourseDetails} />
       </Switch>
     </Router>

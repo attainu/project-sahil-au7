@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { useDispatch, useSelector } from "react-redux";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -83,51 +82,20 @@ export default function Header() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#37474f" }}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             Educate-India
           </Typography>
 
           <div className={classes.grow} />
-          <Button color="primary">
-            <Link to="/">
-              <li>Home</li>
-            </Link>
-          </Button>
-
-          <Button edge="start" color="inherit" aria-label="menu">
-            <Link to="/signup">
-              <li>Signup</li>
-            </Link>
-          </Button>
-
-          <Button edge="start" color="inherit" aria-label="menu">
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
-          </Button>
-
-          <Button edge="start" color="inherit" aria-label="menu">
-            <Link to="/player">
-              <li>Player</li>
-            </Link>
-          </Button>
-
-          <Button edge="start" color="inherit" aria-label="menu">
-            <Link to="/all-courses">
-              <li>All Courses</li>
-            </Link>
-          </Button>
-
-          <Button edge="start" color="inherit" aria-label="menu">
-            <Link to="/course">
-              <li>Course</li>
-            </Link>
-          </Button>
+          {link("signup", "Signup")}
+          {link("login", "Login")}
+          {link("all-courses", "All Courses")}
+          {link("course", "Course")}
         </Toolbar>
-        <div>{progressBarComponent(progressBar.isVisible)}</div>
       </AppBar>
+      <div>{progressBarComponent(progressBar.isVisible)}</div>
     </div>
   );
 }
@@ -140,4 +108,17 @@ export default function Header() {
 function progressBarComponent(isVisible) {
   if (isVisible) return <LinearProgress />;
   else return <div></div>;
+}
+
+/**
+ *
+ * @param {destination route} to
+ * @param {Label} label
+ */
+function link(to, label) {
+  return (
+    <Link to={`/${to}`}>
+      <h3 style={{ color: "white", padding: "10px" }}>{label}</h3>
+    </Link>
+  );
 }

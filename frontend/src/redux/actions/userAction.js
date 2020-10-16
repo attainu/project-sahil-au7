@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setAuthToken } from "../helper/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { progressVisibleType } from "./progressActions";
 
 export const loginUser = (data) => {
   return {
@@ -19,6 +20,8 @@ const userLogoutHelper = (data) => {
 export const userRegister = (userRegisterCredentials, history) => {
   return async (dispatch) => {
     try {
+      dispatch(progressVisibleType(true));
+
       const { data } = await axios.post(
         "https://educate-india.herokuapp.com/user/signup",
         {
@@ -33,6 +36,7 @@ export const userRegister = (userRegisterCredentials, history) => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(loginUser(decoded.user));
+      dispatch(progressVisibleType(false));
       history.push("/courses");
     } catch (err) {
       console.log(err);
@@ -41,6 +45,8 @@ export const userRegister = (userRegisterCredentials, history) => {
         payload: err.response.data,
       });
       console.log("Error in userRegister Action", err.message);
+    } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };
@@ -48,6 +54,8 @@ export const userRegister = (userRegisterCredentials, history) => {
 export const userLogin = (userLoginCredentials, history) => {
   return async (dispatch) => {
     try {
+      dispatch(progressVisibleType(true));
+
       const { data } = await axios({
         method: "Post",
         url: "https://educate-india.herokuapp.com/user/login",
@@ -60,13 +68,15 @@ export const userLogin = (userLoginCredentials, history) => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(loginUser(decoded.user));
-      history.push("/courses");
+      history.push("/all-courses");
     } catch (err) {
       dispatch({
         type: "SET_LOGIN_ERRORS",
         payload: err.response.data,
       });
       console.log("Error in userLogin Action", err.message);
+    } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };
@@ -78,4 +88,3 @@ export const userLogout = () => {
     dispatch(userLogoutHelper({}));
   };
 };
-
