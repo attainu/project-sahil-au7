@@ -8,7 +8,7 @@ Introduction:
 
 Educate India - A purpose to change the way education is perceived and delivered. In which we aim to provide free learning opportunity to the students of all streams and particularly to the aspirants who are preparing for the competitive exams. Most of the times, we tend to Join some overpriced coaching institutes in search of proper guidance and Educational content sites like Unacedemy and BYJU’s. Despite the same quality content is available on other free platforms like YouTube for free. But the content on YouTube is not really in organized manner so we are here trying to organize the content for the students who are eager to learn but can’t afford the overpriced organizations.
 
-# Deployed Link
+## Deployed Link
 
 ### Backend : [EDUCATE INDIA](https://educate-india.herokuapp.com/)
 
@@ -16,6 +16,7 @@ Educate India - A purpose to change the way education is perceived and delivered
 
 Project Authors
 Check Us Out
+
 👤 Sahil
 Github: @sahil-au7
 
