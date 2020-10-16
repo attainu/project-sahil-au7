@@ -1,0 +1,43 @@
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header.js";
+import Home from "./components/Home";
+import LandingPage from "./components/LandingPage";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Player from "./components/Player";
+import Course from "./components/Course";
+import CourseDetails from "./components/CourseDetails";
+import AllCourses from "./components/AllCourses";
+import MyCourses from "./components/MyCourses";
+import PrivateRoute from "./components/PrivateRoute";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios";
+
+function App() {
+  axios.defaults.headers.common = {
+    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+  };
+  axios.defaults.headers.post["Content-Type"] =
+    "application/x-www-form-urlencoded";
+
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={AllCourses} />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/logout" exact component={Logout} />
+        <PrivateRoute path="/course" exact component={Course} />
+        <PrivateRoute path="/all-courses" exact component={AllCourses} />
+        <PrivateRoute path="/course-details" exact component={CourseDetails} />
+        <PrivateRoute path="/my-courses" exact component={MyCourses} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
