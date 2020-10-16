@@ -1,7 +1,7 @@
 /**
  * Get all courses
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  */
 export const getCoursesType = (data) => {
   return {
@@ -12,8 +12,8 @@ export const getCoursesType = (data) => {
 
 /**
  * Get course details
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  */
 export const getCourseDetailsType = (data) => {
   return {
@@ -24,9 +24,9 @@ export const getCourseDetailsType = (data) => {
 
 /**
  * View single course
- * 
- * @param {data} data 
- * @param {video Id} videoId 
+ *
+ * @param {data} data
+ * @param {video Id} videoId
  */
 export const viewCourseType = (data, videoId) => {
   return {
@@ -36,9 +36,22 @@ export const viewCourseType = (data, videoId) => {
 };
 
 /**
- * User login 
- * 
- * @param {data} data 
+ * Enroll to course
+ *
+ * @param {data} data
+ * @param {payload} payload
+ */
+export const enroll = (data, payload) => {
+  return {
+    type: "ENROLL",
+    payload: data,
+  };
+};
+
+/**
+ * User login
+ *
+ * @param {data} data
  */
 export const loginUser = (data) => {
   return {
@@ -49,8 +62,8 @@ export const loginUser = (data) => {
 
 /**
  * User logout
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  */
 export const userLogoutHelper = (data) => {
   return {
@@ -61,8 +74,8 @@ export const userLogoutHelper = (data) => {
 
 /**
  * Progress Bar visibility
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  */
 export const progressVisibleType = (data) => {
   return {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axios } from "../helper/setAuthToken";
 import {
   getCourseDetailsType,
   getCoursesType,
@@ -14,27 +14,21 @@ import process from "../utils/processUtil";
  */
 export const getCourses = (history) => {
   return async (dispatch) => {
-    process(async () => {
-      dispatch(progressVisibleType(true));
+    process(
+      async () => {
+        dispatch(progressVisibleType(true));
 
-      const { data } = await axios.get(
-        "https://educate-india.herokuapp.com/course"
-      );
+        const { data } = await axios.get(
+          "https://educate-india.herokuapp.com/course"
+        );
 
-      dispatch(getCoursesType(data));
-      dispatch(progressVisibleType(false));
-    });
+        dispatch(getCoursesType(data));
+        dispatch(progressVisibleType(false));
+      },
+      () => {},
+      (error) => {}
+    );
   };
-  //   return async (dispatch) => {
-  //     try {
-  //       dispatch(progressVisibleType(true));
-
-  //     } catch (err) {
-  //       console.log(err);
-  //     } finally {
-  //       dispatch(progressVisibleType(false));
-  //     }
-  //   };
 };
 
 /**
@@ -87,11 +81,33 @@ export const viewCourse = (data, videoId, history) => {
  * @param {data} data
  * @param {history} history
  */
-export const enroll = (data, history) => {
+export const enroll = (id, history) => {
   return async (dispatch) => {
     try {
-    } catch (error) {
+      dispatch(progressVisibleType(true));
+
+      console.log(localStorage.getItem("access_token"));
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        `https://educate-india.herokuapp.com/user/course/${id}`,
+        config
+      );
+
+      console.log(data);
+
+      //Enroll
+      dispatch(enroll(data));
+      history.push("/my-course");
+    } catch (e) {
+      console.log(e);
     } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };

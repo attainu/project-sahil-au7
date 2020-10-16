@@ -11,7 +11,6 @@ const setAuthToken = (token) => {
 
 const isAuthToken = () => {
   if (window !== "undefined") {
-    console.log(localStorage.getItem("access_token"));
     if (localStorage.getItem("access_token")) {
       return true;
     } else {
@@ -20,4 +19,4 @@ const isAuthToken = () => {
   }
 };
 
-export { setAuthToken, isAuthToken };
+export { setAuthToken, isAuthToken , axios };

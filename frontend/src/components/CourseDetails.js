@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { viewCourse } from "../redux/actions/courseAction";
+import { viewCourse, enroll } from "../redux/actions/courseAction";
 import { useHistory, Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
@@ -29,8 +29,8 @@ export default function CourseDetails(props) {
   const store = useSelector((store) => store.coursesRoot);
 
   /**
-   * 
-   * @param {card click listener} e 
+   *
+   * @param {card click listener} e
    */
   const onCardClick = (e) => {
     e.preventDefault();
@@ -44,8 +44,20 @@ export default function CourseDetails(props) {
   };
 
   /**
-   * 
-   * @param {link click listener} e 
+   * Enroll course
+   *
+   * @param {event} e
+   */
+  const onEnroll = (e) => {
+    e.preventDefault();
+
+    //Enroll
+    dispatch(enroll(store.courseDetails._id, history));
+  };
+
+  /**
+   *
+   * @param {link click listener} e
    */
   function onClickLink(e) {
     e.preventDefault();
@@ -77,7 +89,7 @@ export default function CourseDetails(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={onEnroll}>
             Enroll
           </Button>
         </CardActions>

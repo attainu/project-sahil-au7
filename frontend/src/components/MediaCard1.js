@@ -49,9 +49,6 @@ export default function MediaCard1(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Enroll
-          </Button>
         </CardActions>
       </Card>
     </div>
