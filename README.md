@@ -60,14 +60,16 @@ NODE_ENV=production
 Nodemailer initials
 
 Running The Project:
-$ npm run dev
+
+    $ npm run dev
+
 Running The Tests
-    $ npm run cover
+\$ npm run cover
 
 ## Technologies Used
 
 - **Express** - Express framework is used to handle all the network request.
-- **JWT** - Json Web Token is used for authorizing the routes.
+- **JWT** - Json Web Token is used for authoriing the routes.
 - **bcryptjs** - We are using bcrypt.js module to hash password of the user.
 - **Nodemailer** - Nodemailer was used to send welcome emails and password reset link.
 - **Mongoose** - MongoDB is an No-Sql database. We used Mongoose for data persistence.
@@ -78,24 +80,40 @@ Running The Tests
 ## BackEnd NPM Packages Used -
 
 @material-ui/core - For designing system. You can find it out here - @material-ui/core.
+
 bcryptjs - We are using bcrypt.js module to hash password of the user. It’s an npm module that you can find it out here at bcryptjs.
+
 body-parser - It’s a Node.js body parsing middleware for accessing data. You can find it out here - body-parser.
+
 cors - It is used as a middleware in Node.JS. Check it out here - cors.
+
 dotenv - It is used to load environment variables from a .env file into process.env. You can find it out here - dotenv.
+
 express - It's the web framework for Node.js that we used to structure our web application. You can find more details here express.
+
 heroku-logger - We used this for Heroku. For more details check here - heroku-logger.
+
 jsonwebtoken - We used to create access tokens for our application. For more details check here - jsonwebtoken.
-mongoose - We used Mongoose because it provides a schema-based solution to model our application data with MongoDB. Which has many features to use example - validation of user's data. For more details check here - mongoose.
+
+mongoose - We used Mongoose because it provides a schema-based solution to model our application data with MongoDB.
+Which has many features to use example - validation of user's data. For more details check here - mongoose.
+
 morgan - HTTP request logger middleware for node.js. For more details check here - morgan.
+
 Node.js. For more details check here - passport.
+
 express-validator - We used validator to validate user data for example - user's entered email address. For more details check here - validator.
 
 ## FrontEnd NPM Packages Used -
 
 React - For the full frontend we used react with CRA. Check it out here React.
+
 Redux - State Management for the whole Project
+
 @material-ui/core - For Material UI react component design system. You can find it out here - @material-ui/core.
+
 axios - Promise based HTTP client for the browser. For more details check here - axios.
+
 classnames - Used for joining classNames together. For more details check here - classnames.
 
 ## Contributers
