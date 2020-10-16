@@ -167,11 +167,15 @@ export const getNotes = (id, history) => {
   console.log(id);
   return async (dispatch) => {
     try {
+      dispatch(getNotesType({ text: "" }));
+
       dispatch(progressVisibleType(true));
 
       const { data } = await axios.get(
         `https://educate-india.herokuapp.com/user/course/notes/${id}`
       );
+
+      console.log(data, "get deta");
 
       dispatch(getNotesType(data));
     } catch (error) {
@@ -200,7 +204,7 @@ export const updateNotes = (notes, id, history) => {
         { text: notes }
       );
 
-      console.log(data)
+      console.log(data);
 
       dispatch(saveNotesType(data));
     } catch (error) {

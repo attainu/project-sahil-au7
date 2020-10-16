@@ -40,12 +40,6 @@ const courseReducer = (state = initialState, action) => {
         isDeleted: action.payload,
       };
 
-    case "UPDATE_COURSE":
-      return {
-        ...state,
-        notes: action.payload,
-      };
-
     case "SAVE_NOTES":
       return {
         ...state,

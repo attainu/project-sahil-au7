@@ -19,9 +19,7 @@ export default function Course() {
   const dispatch = useDispatch();
   const history = useHistory();
   const store = useSelector((store) => store.coursesRoot);
-  const [notes, setValue] = useState(store.notes.text || "");
-
-  console.log(store.notes  , "notes--------------------")
+  const [notes, setValue] = useState(store.notes.text);
 
   const useStyles = makeStyles((theme) => ({
     root: {
