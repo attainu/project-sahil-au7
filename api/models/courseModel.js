@@ -27,7 +27,11 @@ const courseModel = new Schema({
     type: Date,
     default: Date.now(),
   },
-  link: [],
+  link: [
+    {
+      type: String,
+    }
+  ],
   created_at: {
     type: Date,
     default: Date.now(),

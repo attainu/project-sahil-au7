@@ -7,6 +7,7 @@ const controller = {};
 controller.create = async (req, res) => {
   try {
     //Create new course
+    console.log(req.body)
     const course = await service.create(req.body);
 
     res.status(201).json(course);

@@ -61,7 +61,7 @@ services.getMyCourseSpecific = (_id) =>
 services.getMyCourse = (_id) =>
   new Promise(async (res, rej) => {
     try {
-      const user = await User.findById(_id);
+      const user = await User.findById({ _id }).populate("myCourses");
 
       res(user);
     } catch (e) {
