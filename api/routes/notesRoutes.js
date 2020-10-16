@@ -9,13 +9,6 @@ const router = express.Router();
 
 
 
-//POST Create Note
-router.post(
-    "/:id",
-    authorize,
-  controller.createNotes
-);
-
 //PATCH Notes Creation
 router.patch(
     "/:id",

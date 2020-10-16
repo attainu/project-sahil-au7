@@ -6,17 +6,6 @@ const controller = {};
 
 
 //UPDATE Notes
-controller.createNotes = async (req, res) => {
-    try {
-        const notes = await service.createNotes(req, req.body,req.params.id);
-
-        res.status(201).json(notes);
-    } catch (e) {
-        handleErrors(e, res);
-    }
-};
-
-//UPDATE Notes
 controller.updateNotes = async (req, res) => {
     try {
         const notes = await service.updateNotes(req, req.body,req.params.id,);
@@ -39,16 +28,5 @@ controller.getNotes = async (req, res) => {
   }
 };
 
-// //Delete Course
-// controller.deleteMyCourse = async (req, res) => {
-//   try {
-//     //Delete My Course
-//     const user = await service.deleteMyCourse(req._id, req.params.id);
-
-//     res.status(201).json(user);
-//   } catch (e) {
-//     handleErrors(e, res);
-//   }
-// };
 
 export default controller;

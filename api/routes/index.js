@@ -10,9 +10,6 @@ import courseRoutes from "../routes/courseRoutes";
 import myCourseRoutes from "../routes/myCourseRoutes";
 import notesRoutes from "./notesRoutes"
 
-
-import authorize from "../middleware/auth";
-
 const routes = express.Router();
 
 //User Routes
