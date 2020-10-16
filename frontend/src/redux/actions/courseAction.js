@@ -1,4 +1,5 @@
 import axios from "axios";
+import { progressVisibleType } from "./progressActions";
 
 export const getCoursesType = (data) => {
   return {
@@ -34,6 +35,7 @@ export const getCourses = (history) => {
       );
 
       dispatch(getCoursesType(data));
+      dispatch(progressVisibleType(false));
     } catch (err) {
       console.log(err);
       dispatch({

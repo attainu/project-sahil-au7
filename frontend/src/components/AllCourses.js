@@ -5,6 +5,7 @@ import { getCourses } from "../redux/actions/courseAction";
 import Card from "../components/MediaCard1";
 import { Grid } from "@material-ui/core";
 import { getCourseDetails } from "../redux/actions/courseAction";
+import { isVisible } from "../redux/actions/progressActions";
 
 export default function AllCourses() {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ export default function AllCourses() {
    */
   useEffect(() => {
     dispatch(getCourses(history));
+
+    //Display progress bar
+    dispatch(isVisible(true));
   }, []);
 
   /**

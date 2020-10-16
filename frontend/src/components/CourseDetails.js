@@ -28,6 +28,10 @@ export default function CourseDetails(props) {
   const history = useHistory();
   const store = useSelector((store) => store.coursesRoot);
 
+  /**
+   * 
+   * @param {card click listener} e 
+   */
   const onCardClick = (e) => {
     e.preventDefault();
     dispatch(
@@ -39,6 +43,10 @@ export default function CourseDetails(props) {
     );
   };
 
+  /**
+   * 
+   * @param {link click listener} e 
+   */
   function onClickLink(e) {
     e.preventDefault();
     dispatch(viewCourse(store.courseDetails, this, history));
@@ -78,20 +86,20 @@ export default function CourseDetails(props) {
       <Card>
         <div className={classes.links} style={{ display: "inline-block" }}>
           <Grid container spacing={4}>
-            <Grid xs={6} sm={3}>
-              {links.map((element) => (
+            {links.map((element) => (
+              <Grid xs={6} sm={3} spacing={4}>
                 <CardMedia
                   style={{ padding: "10px" }}
                   component="img"
                   alt="Contemplative Reptile"
                   height="100"
                   width="100"
-                  image={` https://img.youtube.com/vi/${element}/mqdefault.jpg`}
+                  image={`https://img.youtube.com/vi/${element}/mqdefault.jpg`}
                   title="Contemplative Reptile"
                   onClick={onClickLink.bind(element)}
                 />
-              ))}
-            </Grid>
+              </Grid>
+            ))}
           </Grid>
         </div>
       </Card>
