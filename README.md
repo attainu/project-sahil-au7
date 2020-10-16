@@ -1,4 +1,4 @@
-EDUCATE INDIA
+{{EDUCATE INDIA}}
 
 What we are trying to build?
 
