@@ -10,9 +10,9 @@ Educate India - A purpose to change the way education is perceived and delivered
 
 # Deployed Link
 
-## Backend : [EDUCATE INDIA](https://educate-india.herokuapp.com/)
+### Backend : [EDUCATE INDIA](https://educate-india.herokuapp.com/)
 
-## Frontend : [EDUCATE INDIA](https://educate-india.netlify.app/)
+### Frontend : [EDUCATE INDIA](https://educate-india.netlify.app/)
 
 Project Authors
 Check Us Out
@@ -22,7 +22,7 @@ Github: @sahil-au7
 👤 Utkarsh singh
 Github: @utkarsh-singh-au7
 
-# Requirements
+## Requirements
 
 For development, you will only need Node.js and a node global package installed in your environment.
 
@@ -38,7 +38,7 @@ If the installation was successful, you should be able to run the following comm
     $ npm -v
     6.14.4
 
-# Project Installation
+## Project Installation
 
 After installing node, this project will need many NPM Packages, so just run the following command to install all the dependencies.
 
@@ -70,7 +70,7 @@ Running The Tests
 - **Nodemailer** - Nodemailer was used to send welcome emails and password reset link.
 - **Mongoose** - MongoDB is an No-Sql database. We used Mongoose for data persistence.
 
-# BackEnd NPM Packages Used -
+## BackEnd NPM Packages Used -
 
 @material-ui/core - For designing system. You can find it out here - @material-ui/core.
 bcryptjs - We are using bcrypt.js module to hash password of the user. It’s an npm module that you can find it out here at bcryptjs.
@@ -85,7 +85,7 @@ morgan - HTTP request logger middleware for node.js. For more details check here
 Node.js. For more details check here - passport.
 express-validator - We used validator to validate user data for example - user's entered email address. For more details check here - validator.
 
-# FrontEnd NPM Packages Used -
+## FrontEnd NPM Packages Used -
 
 React - For the full frontend we used react with CRA. Check it out here React.
 Redux - State Management for the whole Project
