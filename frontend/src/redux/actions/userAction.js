@@ -37,11 +37,7 @@ export const userRegister = (userRegisterCredentials, history) => {
       history.push("/courses");
     } catch (err) {
       console.log(err);
-      dispatch({
-        type: "SET_REGISTER_ERRORS",
-        payload: err.response.data,
-      });
-      console.log("Error in userRegister Action", err.message);
+     
     } finally {
       dispatch(progressVisibleType(false));
     }
@@ -67,10 +63,6 @@ export const userLogin = (userLoginCredentials, history) => {
       dispatch(loginUser(decoded.user));
       history.push("/all-courses");
     } catch (err) {
-      dispatch({
-        type: "SET_LOGIN_ERRORS",
-        payload: err.response.data,
-      });
       console.log("Error in userLogin Action", err.message);
     } finally {
       dispatch(progressVisibleType(false));

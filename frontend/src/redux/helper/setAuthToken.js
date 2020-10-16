@@ -3,7 +3,9 @@ import axios from "axios";
 const setAuthToken = (token) => {
   console.log(token);
   if (token) {
-    axios.defaults.headers.common["Authorization"] = token;
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    axios.defaults.headers.post["Content-Type"] =
+      "application/x-www-form-urlencoded";
   } else {
     delete axios.defaults.headers.common["Authorization"];
   }
@@ -19,4 +21,4 @@ const isAuthToken = () => {
   }
 };
 
-export { setAuthToken, isAuthToken , axios };
+export { setAuthToken, isAuthToken, axios };

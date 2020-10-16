@@ -1,9 +1,11 @@
-import { axios } from "../helper/setAuthToken";
+import axios from "axios";
 import {
   getCourseDetailsType,
   getCoursesType,
   viewCourseType,
   progressVisibleType,
+  enrollType,
+  myCoursesType,
 } from "../actionType";
 import process from "../utils/processUtil";
 
@@ -86,26 +88,38 @@ export const enroll = (id, history) => {
     try {
       dispatch(progressVisibleType(true));
 
-      console.log(localStorage.getItem("access_token"));
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      };
-
       const { data } = await axios.post(
-        `https://educate-india.herokuapp.com/user/course/${id}`,
-        config
+        `https://educate-india.herokuapp.com/user/course/${id}`
       );
 
-      console.log(data);
-
       //Enroll
-      dispatch(enroll(data));
+      dispatch(enrollType(data));
       history.push("/my-course");
     } catch (e) {
       console.log(e);
+    } finally {
+      dispatch(progressVisibleType(false));
+    }
+  };
+};
+
+/**
+ * My courses
+ *
+ * @param {} history
+ */
+export const myCourses = (history) => {
+  return async (dispatch) => {
+    try {
+      dispatch(progressVisibleType(true));
+
+      const { data } = await axios.get(
+        "https://educate-india.herokuapp.com/user/course"
+      );
+
+      dispatch(myCoursesType(data.myCourses));
+      history.push("/my-courses");
+    } catch (error) {
     } finally {
       dispatch(progressVisibleType(false));
     }

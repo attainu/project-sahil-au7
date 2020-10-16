@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { getCourses } from "../redux/actions/courseAction";
+import { getCourses, myCourses } from "../redux/actions/courseAction";
 import Card from "../components/MediaCard1";
 import { Grid } from "@material-ui/core";
 import { getCourseDetails } from "../redux/actions/courseAction";
@@ -13,13 +13,10 @@ export default function MyCourses() {
   const store = useSelector((store) => store.coursesRoot);
 
   /**
-   * Fetch all courses
+   * Fetch  courses
    */
   useEffect(() => {
-    dispatch(getCourses(history));
-
-    // //Display progress bar
-    // dispatch(isVisible(true));
+    dispatch(myCourses(history));
   }, []);
 
   /**
@@ -33,19 +30,22 @@ export default function MyCourses() {
   }
 
   return (
-    <Grid container>
-      {store.courses.map((data) => (
-        <Grid item key={data._id} id={data._id}>
-          <Card
-            onClick={onClick}
-            title={data.title}
-            videoId={data.link.map((v) => v.split("&")[0])[0]}
-            description={data.description}
-            key={data._id}
-            id={data._id}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <h1>My Courses</h1>
+      <Grid container>
+        {store.myCourses.map((data) => (
+          <Grid item key={data._id} id={data._id}>
+            <Card
+              onClick={onClick}
+              title={data.title}
+              videoId={data.link.map((v) => v.split("&")[0])[0]}
+              description={data.description}
+              key={data._id}
+              id={data._id}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 }

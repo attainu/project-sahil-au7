@@ -36,19 +36,6 @@ export const viewCourseType = (data, videoId) => {
 };
 
 /**
- * Enroll to course
- *
- * @param {data} data
- * @param {payload} payload
- */
-export const enroll = (data, payload) => {
-  return {
-    type: "ENROLL",
-    payload: data,
-  };
-};
-
-/**
  * User login
  *
  * @param {data} data
@@ -80,6 +67,30 @@ export const userLogoutHelper = (data) => {
 export const progressVisibleType = (data) => {
   return {
     type: "VISIBLITY",
+    payload: data,
+  };
+};
+
+/**
+ * Enroll course
+ *
+ * @param {data} data
+ */
+export const enrollType = (data) => {
+  return {
+    type: "ENROLL",
+    payload: data,
+  };
+};
+
+/**
+ * Get my courses
+ *
+ * @param {data} data
+ */
+export const myCoursesType = (data) => {
+  return {
+    type: "MY_COURSES",
     payload: data,
   };
 };
