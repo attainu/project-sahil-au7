@@ -1,11 +1,7 @@
 import axios from "axios";
 import { setAuthToken } from "../helper/setAuthToken";
 import jwt_decode from "jwt-decode";
-import {
-  progressVisibleType,
-  loginUser,
-  userLogoutHelper,
-} from "../actionType";
+import { progressVisibleType, loginUser, isAuthenticated } from "../actionType";
 
 /**
  * User register
@@ -35,6 +31,7 @@ export const userRegister = (userRegisterCredentials, history) => {
       const decoded = jwt_decode(token);
       dispatch(loginUser(decoded.user));
       dispatch(progressVisibleType(false));
+      dispatch(isAuthenticated(true));
       history.push("/all-courses");
     } catch (err) {
       console.log(err);
@@ -62,6 +59,7 @@ export const userLogin = (userLoginCredentials, history) => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(loginUser(decoded.user));
+      dispatch(isAuthenticated(true));
       history.push("/all-courses");
     } catch (err) {
       console.log("Error in userLogin Action", err.message);
@@ -71,10 +69,17 @@ export const userLogin = (userLoginCredentials, history) => {
   };
 };
 
-export const userLogout = () => {
+/**
+ * Logout
+ */
+export const userLogout = (history) => {
   return (dispatch) => {
-    localStorage.removeItem("userJwtToken");
-    setAuthToken(false);
-    dispatch(userLogoutHelper({}));
+    dispatch(progressVisibleType(true));
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("uid");
+    setAuthToken(null);
+    dispatch(isAuthenticated(false));
+    history.push("/login");
+    dispatch(progressVisibleType(false));
   };
 };

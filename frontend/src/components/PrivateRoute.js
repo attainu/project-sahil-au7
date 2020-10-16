@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-// import { isAuth } from "../utils/helper";
-
 import { isAuthToken } from "../redux/helper/setAuthToken";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

@@ -17,9 +17,6 @@ export default function AllCourses() {
    */
   useEffect(() => {
     dispatch(getCourses(history));
-
-    // //Display progress bar
-    // dispatch(isVisible(true));
   }, []);
 
   /**

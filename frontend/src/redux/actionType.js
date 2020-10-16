@@ -52,7 +52,7 @@ export const loginUser = (data) => {
  *
  * @param {data} data
  */
-export const userLogoutHelper = (data) => {
+export const isAuthenticated = (data) => {
   return {
     type: "DELETE_USERS_DATA",
     payload: data,

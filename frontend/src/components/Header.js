@@ -35,8 +35,8 @@ export default function Header() {
           </Typography>
 
           <div className={classes.grow} />
-          {link("signup", "Signup")}
-          {link("login", "Login")}
+          {progressBar.isVisible}
+          {authComponents(progressBar.isVisible)}
           {link("all-courses", "All Courses")}
           {link("course", "Course")}
           {link("my-courses", "My Courses")}
@@ -68,4 +68,19 @@ function link(to, label) {
       <h3 style={{ color: "white", padding: "10px" }}>{label}</h3>
     </Link>
   );
+}
+
+/**
+ * Get auth components
+ */
+function authComponents(isVisible) {
+  if (!localStorage.getItem("access_token")) {
+    return (
+      <div style={{ display: "inline-flex" }}>
+        {link("signup", "Signup")} {link("login", "Login")}
+      </div>
+    );
+  } else {
+    return link("logout", "Logout");
+  }
 }

@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import Player from "./components/Player";
 import Course from "./components/Course";
 import CourseDetails from "./components/CourseDetails";
@@ -26,9 +27,10 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path="/" exact component={LandingPage} />
+        <Route path="/" exact component={AllCourses} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
+        <Route path="/logout" exact component={Logout} />
         <PrivateRoute path="/course" exact component={Course} />
         <PrivateRoute path="/all-courses" exact component={AllCourses} />
         <PrivateRoute path="/course-details" exact component={CourseDetails} />

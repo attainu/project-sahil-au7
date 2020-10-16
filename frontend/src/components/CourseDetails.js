@@ -67,7 +67,7 @@ export default function CourseDetails(props) {
   const onDelete = (e) => {
     e.preventDefault();
 
-    //Enroll
+    //Delete course
     dispatch(deleteCourse(store.courseDetails._id, history));
   };
 
