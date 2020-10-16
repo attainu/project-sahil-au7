@@ -112,7 +112,7 @@ export const myCoursesType = (data) => {
  *
  * @param {data} data
  */
-export const getNotes = (data) => {
+export const getNotesType = (data) => {
   return {
     type: "GET_NOTES",
     payload: data,
@@ -124,7 +124,7 @@ export const getNotes = (data) => {
  * 
  * @param {data} data 
  */
-export const saveNotes = (data) => {
+export const saveNotesType = (data) => {
   return {
     type: "SAVE_NOTES",
     payload: data,

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { Grid } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
@@ -9,10 +9,18 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
+import { getNotes, updateNotes } from "../redux/actions/courseAction";
+import { useHistory, Link } from "react-router-dom";
+import { useState } from "react";
 
 import Player from "./Player";
 
 export default function Course() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const store = useSelector((store) => store.coursesRoot);
+  const [notes, setValue] = useState("");
+
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -30,7 +38,13 @@ export default function Course() {
   }));
 
   const classes = useStyles();
-  const store = useSelector((store) => store.coursesRoot);
+
+  /**
+   * Fetch all courses
+   */
+  useEffect(() => {
+    dispatch(getNotes(store.viewCourse._id, history));
+  }, []);
 
   /**
    * Save notes
@@ -40,7 +54,7 @@ export default function Course() {
   const onSave = (e) => {
     e.preventDefault();
 
-    //TODO: Notes
+    dispatch(updateNotes(notes, store.viewCourse._id, history));
   };
 
   return (
@@ -58,10 +72,12 @@ export default function Course() {
             <TextField
               id="outlined-multiline-static"
               label="Notes"
+              value={notes}
               multiline
               rows="23"
               fullWidth
               variant="outlined"
+              onChange={(e) => setValue(e.target.value)}
             />
             <Grid>
               <Button

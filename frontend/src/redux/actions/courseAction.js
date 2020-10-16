@@ -7,6 +7,8 @@ import {
   enrollType,
   deleteCourseType,
   myCoursesType,
+  getNotesType,
+  saveNotesType,
 } from "../actionType";
 import process from "../utils/processUtil";
 
@@ -161,11 +163,20 @@ export const myCourses = (history) => {
  *
  * @param {history} history
  */
-export const getNotes = (history) => {
+export const getNotes = (id, history) => {
   return async (dispatch) => {
     try {
+      dispatch(progressVisibleType(true));
+
+      const { data } = await axios.get(
+        `https://educate-india.herokuapp.com/user/course/notes/${id}`
+      );
+
+      dispatch(getNotesType(data));
     } catch (error) {
+      console.log(error);
     } finally {
+      dispatch(progressVisibleType(false));
     }
   };
 };
@@ -175,4 +186,25 @@ export const getNotes = (history) => {
  *
  * @param {history} history
  */
-export const updateNotes = (history) => {};
+export const updateNotes = (notes, id, history) => {
+  console.table(notes, id);
+  return async (dispatch) => {
+    try {
+      dispatch(progressVisibleType(true));
+
+      const {
+        data,
+      } = await axios.post(
+        `https://educate-india.herokuapp.com/user/course/notes/${id}`,
+        { text: notes }
+      );
+
+      console.log(data)
+      dispatch(saveNotesType(data));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(progressVisibleType(false));
+    }
+  };
+};
