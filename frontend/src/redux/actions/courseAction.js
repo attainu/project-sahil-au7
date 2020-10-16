@@ -111,28 +111,27 @@ export const enroll = (id, history) => {
  * @param {history} history
  */
 export const deleteCourse = (id, history) => {
-    return async (dispatch) => {
-      try {
-        dispatch(progressVisibleType(true));
-  
-        const { data } = await axios.delete(
-          `https://educate-india.herokuapp.com/user/course/${id}`
-        );
-  
-        console.log(data)
+  return async (dispatch) => {
+    try {
+      dispatch(progressVisibleType(true));
 
-        //Enroll
-        dispatch(deleteCourseType(true));
-        history.push("/my-courses");
-      } catch (e) {
-        console.log(e);
-        dispatch(deleteCourseType(false));
-      } finally {
-        dispatch(progressVisibleType(false));
-      }
-    };
+      const { data } = await axios.delete(
+        `https://educate-india.herokuapp.com/user/course/${id}`
+      );
+
+      console.log(data);
+
+      //Enroll
+      dispatch(deleteCourseType(true));
+      history.push("/my-courses");
+    } catch (e) {
+      console.log(e);
+      dispatch(deleteCourseType(false));
+    } finally {
+      dispatch(progressVisibleType(false));
+    }
   };
-  
+};
 
 /**
  * My courses
@@ -156,3 +155,24 @@ export const myCourses = (history) => {
     }
   };
 };
+
+/**
+ * Get notess
+ *
+ * @param {history} history
+ */
+export const getNotes = (history) => {
+  return async (dispatch) => {
+    try {
+    } catch (error) {
+    } finally {
+    }
+  };
+};
+
+/**
+ * update notess
+ *
+ * @param {history} history
+ */
+export const updateNotes = (history) => {};

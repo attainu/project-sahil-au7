@@ -30,19 +30,23 @@ export default function AllCourses() {
   }
 
   return (
-    <Grid container>
-      {store.courses.map((data) => (
-        <Grid item key={data._id} id={data._id}>
-          <Card
-            onClick={onClick}
-            title={data.title}
-            videoId={data.link.map((v) => v.split("&")[0])[0]}
-            description={data.description}
-            key={data._id}
-            id={data._id}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <h1>All Courses</h1>
+
+      <Grid container>
+        {store.courses.map((data) => (
+          <Grid item key={data._id} id={data._id}>
+            <Card
+              onClick={onClick}
+              title={data.title}
+              videoId={data.link.map((v) => v.split("&")[0])[0]}
+              description={data.description}
+              key={data._id}
+              id={data._id}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 }

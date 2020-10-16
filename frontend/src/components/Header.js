@@ -38,7 +38,6 @@ export default function Header() {
           {progressBar.isVisible}
           {authComponents(progressBar.isVisible)}
           {link("all-courses", "All Courses")}
-          {link("course", "Course")}
           {link("my-courses", "My Courses")}
         </Toolbar>
       </AppBar>

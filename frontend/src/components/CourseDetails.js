@@ -105,8 +105,10 @@ export default function CourseDetails(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions></CardActions>
-        {isEnrolled(store.courseDetails.users, onEnroll, onDelete)}
+
+        <CardActions>
+          {isEnrolled(store.courseDetails.users, onEnroll, onDelete)}
+        </CardActions>
       </Card>
 
       <Card>

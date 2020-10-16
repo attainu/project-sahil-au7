@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 import Player from "./Player";
 
@@ -31,6 +32,17 @@ export default function Course() {
   const classes = useStyles();
   const store = useSelector((store) => store.coursesRoot);
 
+  /**
+   * Save notes
+   *
+   * @param {e} e
+   */
+  const onSave = (e) => {
+    e.preventDefault();
+
+    //TODO: Notes
+  };
+
   return (
     <div
       className={classes.root}
@@ -42,14 +54,27 @@ export default function Course() {
           <Player id={store.viewCourse.videoId} />
         </Grid>
         <Grid item xs={4}>
-          <TextField
-            id="outlined-multiline-static"
-            label="Notes"
-            multiline
-            rows="23"
-            fullWidth
-            variant="outlined"
-          />
+          <div>
+            <TextField
+              id="outlined-multiline-static"
+              label="Notes"
+              multiline
+              rows="23"
+              fullWidth
+              variant="outlined"
+            />
+            <Grid>
+              <Button
+                size="small"
+                color="secondary"
+                item
+                xs={4}
+                onClick={onSave}
+              >
+                Save
+              </Button>
+            </Grid>
+          </div>
         </Grid>
       </Grid>
     </div>

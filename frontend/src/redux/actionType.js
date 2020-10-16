@@ -89,11 +89,11 @@ export const enrollType = (data) => {
  * @param {data} data
  */
 export const deleteCourseType = (data) => {
-    return {
-      type: "DELETE_COURSE",
-      payload: data,
-    };
+  return {
+    type: "DELETE_COURSE",
+    payload: data,
   };
+};
 
 /**
  * Get my courses
@@ -103,6 +103,30 @@ export const deleteCourseType = (data) => {
 export const myCoursesType = (data) => {
   return {
     type: "MY_COURSES",
+    payload: data,
+  };
+};
+
+/**
+ * Get notes
+ *
+ * @param {data} data
+ */
+export const getNotes = (data) => {
+  return {
+    type: "GET_NOTES",
+    payload: data,
+  };
+};
+
+/**
+ * Save notes
+ * 
+ * @param {data} data 
+ */
+export const saveNotes = (data) => {
+  return {
+    type: "SAVE_NOTES",
     payload: data,
   };
 };

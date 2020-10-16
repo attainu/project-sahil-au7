@@ -5,6 +5,7 @@ const initialState = {
   videoId: {},
   myCourses: [],
   isDeleted: false,
+  notes: {},
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -37,6 +38,18 @@ const courseReducer = (state = initialState, action) => {
       return {
         ...state,
         isDeleted: action.payload,
+      };
+
+    case "UPDATE_COURSE":
+      return {
+        ...state,
+        notes: action.payload,
+      };
+
+    case "SAVE_NOTE":
+      return {
+        ...state,
+        notes: action.payload,
       };
 
     default:
