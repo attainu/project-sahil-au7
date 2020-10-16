@@ -9,9 +9,9 @@ import {
 
 /**
  * User register
- * 
- * @param {User credentials} userRegisterCredentials 
- * @param {history} history 
+ *
+ * @param {User credentials} userRegisterCredentials
+ * @param {history} history
  */
 export const userRegister = (userRegisterCredentials, history) => {
   return async (dispatch) => {
@@ -25,19 +25,19 @@ export const userRegister = (userRegisterCredentials, history) => {
         }
       );
 
-      const { token } = data;
+      const { token, user } = data;
 
       //Store access token in local storage
       localStorage.setItem("access_token", token);
+      localStorage.setItem("uid", user._id);
 
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(loginUser(decoded.user));
       dispatch(progressVisibleType(false));
-      history.push("/courses");
+      history.push("/all-courses");
     } catch (err) {
       console.log(err);
-     
     } finally {
       dispatch(progressVisibleType(false));
     }
@@ -55,8 +55,9 @@ export const userLogin = (userLoginCredentials, history) => {
         data: userLoginCredentials,
       });
 
-      const { token } = data;
+      const { token, user } = data;
       localStorage.setItem("access_token", token);
+      localStorage.setItem("uid", user._id);
 
       setAuthToken(token);
       const decoded = jwt_decode(token);

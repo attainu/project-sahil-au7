@@ -84,6 +84,18 @@ export const enrollType = (data) => {
 };
 
 /**
+ * Delete course
+ *
+ * @param {data} data
+ */
+export const deleteCourseType = (data) => {
+    return {
+      type: "DELETE_COURSE",
+      payload: data,
+    };
+  };
+
+/**
  * Get my courses
  *
  * @param {data} data

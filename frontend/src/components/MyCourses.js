@@ -5,7 +5,6 @@ import { getCourses, myCourses } from "../redux/actions/courseAction";
 import Card from "../components/MediaCard1";
 import { Grid } from "@material-ui/core";
 import { getCourseDetails } from "../redux/actions/courseAction";
-import { isVisible } from "../redux/actions/progressActions";
 
 export default function MyCourses() {
   const dispatch = useDispatch();

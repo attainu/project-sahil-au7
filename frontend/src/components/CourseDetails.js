@@ -9,7 +9,11 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { viewCourse, enroll } from "../redux/actions/courseAction";
+import {
+  viewCourse,
+  enroll,
+  deleteCourse,
+} from "../redux/actions/courseAction";
 import { useHistory, Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
@@ -56,6 +60,18 @@ export default function CourseDetails(props) {
   };
 
   /**
+   * Delete course
+   *
+   * @param {event} e
+   */
+  const onDelete = (e) => {
+    e.preventDefault();
+
+    //Enroll
+    dispatch(deleteCourse(store.courseDetails._id, history));
+  };
+
+  /**
    *
    * @param {link click listener} e
    */
@@ -64,6 +80,7 @@ export default function CourseDetails(props) {
     dispatch(viewCourse(store.courseDetails, this, history));
   }
 
+  //Video links
   var links = store.courseDetails.link.map((v) => v.split("&")[0]);
 
   return (
@@ -88,11 +105,8 @@ export default function CourseDetails(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary" onClick={onEnroll}>
-            Enroll
-          </Button>
-        </CardActions>
+        <CardActions></CardActions>
+        {isEnrolled(store.courseDetails.users, onEnroll, onDelete)}
       </Card>
 
       <Card>
@@ -117,4 +131,26 @@ export default function CourseDetails(props) {
       </Card>
     </Container>
   );
+}
+
+/**
+ * Check if the current user is enrolled
+ *
+ * @param {users} users
+ */
+function isEnrolled(users = [], onEnroll, onDelete) {
+  var uid = localStorage.getItem("uid");
+  if (users.find((e) => e === uid)) {
+    return (
+      <Button size="small" color="primary" onClick={onDelete}>
+        Delete
+      </Button>
+    );
+  } else {
+    return (
+      <Button size="small" color="primary" onClick={onEnroll}>
+        Enroll
+      </Button>
+    );
+  }
 }
