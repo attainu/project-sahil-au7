@@ -67,9 +67,13 @@ Running The Tests
 ## Technologies Used
 
 - **Express** - Express framework is used to handle all the network request.
-- **JWT** - Json Web Token is used for authorising the routes.
+- **JWT** - Json Web Token is used for authorizing the routes.
+- **bcryptjs** - We are using bcrypt.js module to hash password of the user.
 - **Nodemailer** - Nodemailer was used to send welcome emails and password reset link.
 - **Mongoose** - MongoDB is an No-Sql database. We used Mongoose for data persistence.
+- **React** - For the full frontend we used react with CRA. Check it out here React.
+- **Redux** - State Management for the whole Project
+- **Axios** - Promise based HTTP client for the browser. For more details check here - axios.
 
 ## BackEnd NPM Packages Used -
 
