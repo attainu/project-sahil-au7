@@ -37,7 +37,6 @@ export default function Header() {
 
           <div className={classes.grow} />
           {progressBar.isVisible}
-          {/* {error()} */}
           {authComponents(progressBar.isVisible)}
           {link("all-courses", "All Courses")}
           {link("my-courses", "My Courses")}
@@ -85,12 +84,4 @@ function authComponents(isVisible) {
   } else {
     return link("logout", "Logout");
   }
-}
-
-/**
- * Error
- */
-function error(isVisible) {
-  if (isVisible) return <Alert />;
-  else return <div></div>;
 }

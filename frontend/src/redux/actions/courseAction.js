@@ -1,5 +1,16 @@
 import axios from "axios";
-import { deleteCourseType, enrollType, getCourseDetailsType, getCoursesType, getNotesType, myCoursesType, progressVisibleType, saveNotesType, viewCourseType } from "../actionType";
+import {
+  deleteCourseType,
+  enrollType,
+  getCourseDetailsType,
+  getCoursesType,
+  getNotesType,
+  myCoursesType,
+  progressVisibleType,
+  saveNotesType,
+  viewCourseType,
+  errorType,
+} from "../actionType";
 import process from "../utils/processUtil";
 
 /**
@@ -9,20 +20,19 @@ import process from "../utils/processUtil";
  */
 export const getCourses = (history) => {
   return async (dispatch) => {
-    process(
-      async () => {
-        dispatch(progressVisibleType(true));
+    try {
+      dispatch(progressVisibleType(true));
 
-        const { data } = await axios.get(
-          "https://educate-india.herokuapp.com/course"
-        );
+      const { data } = await axios.get(
+        "https://educate-india.herokuapp.com/course"
+      );
 
-        dispatch(getCoursesType(data));
-        dispatch(progressVisibleType(false));
-      },
-      () => {},
-      (error) => {}
-    );
+      dispatch(getCoursesType(data));
+    } catch (e) {
+      dispatch(errorType(e.message));
+    } finally {
+      dispatch(progressVisibleType(false));
+    }
   };
 };
 
@@ -42,12 +52,8 @@ export const getCourseDetails = (id, history) => {
 
       dispatch(getCourseDetailsType(data));
       history.push("/course-details");
-    } catch (err) {
-      dispatch({
-        type: "SET_REGISTER_ERRORS",
-        payload: err.response.data,
-      });
-      console.log(err.message);
+    } catch (e) {
+      dispatch(errorType(e.message));
     } finally {
       dispatch(progressVisibleType(false));
     }
@@ -154,7 +160,7 @@ export const myCourses = (history) => {
  * @param {history} history
  */
 export const getNotes = (id, history) => {
-  console.log(id , "get");
+  console.log(id, "get");
   return async (dispatch) => {
     try {
       dispatch(progressVisibleType(true));
@@ -178,7 +184,7 @@ export const getNotes = (id, history) => {
  * @param {history} history
  */
 export const updateNotes = (notes, id, history) => {
-  console.log(id , "update");
+  console.log(id, "update");
   return async (dispatch) => {
     try {
       dispatch(progressVisibleType(true));

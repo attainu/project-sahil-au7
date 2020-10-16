@@ -39,7 +39,6 @@ export const userRegister = (userRegisterCredentials, history) => {
       dispatch(isAuthenticated(true));
       history.push("/all-courses");
     } catch (err) {
-      console.log(err);
       dispatch(errorType(err.message));
     } finally {
       dispatch(progressVisibleType(false));
@@ -68,7 +67,7 @@ export const userLogin = (userLoginCredentials, history) => {
       dispatch(isAuthenticated(true));
       history.push("/all-courses");
     } catch (err) {
-      console.log("Error in userLogin Action", err.message);
+      dispatch(errorType(err.message));
     } finally {
       dispatch(progressVisibleType(false));
     }
