@@ -1,22 +1,18 @@
 import axios from "axios";
 import { setAuthToken } from "../helper/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { progressVisibleType } from "./progressActions";
+import {
+  progressVisibleType,
+  loginUser,
+  userLogoutHelper,
+} from "../actionType";
 
-export const loginUser = (data) => {
-  return {
-    type: "SET_USERS_DATA",
-    payload: data,
-  };
-};
-
-const userLogoutHelper = (data) => {
-  return {
-    type: "DELETE_USERS_DATA",
-    payload: data,
-  };
-};
-
+/**
+ * User register
+ * 
+ * @param {User credentials} userRegisterCredentials 
+ * @param {history} history 
+ */
 export const userRegister = (userRegisterCredentials, history) => {
   return async (dispatch) => {
     try {
@@ -28,9 +24,10 @@ export const userRegister = (userRegisterCredentials, history) => {
           ...userRegisterCredentials,
         }
       );
-      // dispatch(registerLoaderFlagHelper(true))
 
       const { token } = data;
+
+      //Store access token in local storage
       localStorage.setItem("access_token", token);
 
       setAuthToken(token);

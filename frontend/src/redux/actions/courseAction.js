@@ -1,26 +1,11 @@
 import axios from "axios";
-import { progressVisibleType } from "./progressActions";
-
-export const getCoursesType = (data) => {
-  return {
-    type: "GET_COURSES",
-    payload: data,
-  };
-};
-
-export const getCourseDetailsType = (data) => {
-  return {
-    type: "COURSE_DETAILS",
-    payload: data,
-  };
-};
-
-export const viewCourseType = (data, videoId) => {
-  return {
-    type: "VIEW_COURSE",
-    payload: { ...data, videoId },
-  };
-};
+import {
+  getCourseDetailsType,
+  getCoursesType,
+  viewCourseType,
+  progressVisibleType,
+} from "../actionType";
+import process from "../utils/processUtil";
 
 /**
  * Get all courses
@@ -29,7 +14,7 @@ export const viewCourseType = (data, videoId) => {
  */
 export const getCourses = (history) => {
   return async (dispatch) => {
-    try {
+    process(async () => {
       dispatch(progressVisibleType(true));
 
       const { data } = await axios.get(
@@ -37,17 +22,19 @@ export const getCourses = (history) => {
       );
 
       dispatch(getCoursesType(data));
-    } catch (err) {
-      console.log(err);
-      dispatch({
-        type: "SET_REGISTER_ERRORS",
-        payload: err.response.data,
-      });
-      console.log("Error in userRegister Action", err.message);
-    } finally {
       dispatch(progressVisibleType(false));
-    }
+    });
   };
+  //   return async (dispatch) => {
+  //     try {
+  //       dispatch(progressVisibleType(true));
+
+  //     } catch (err) {
+  //       console.log(err);
+  //     } finally {
+  //       dispatch(progressVisibleType(false));
+  //     }
+  //   };
 };
 
 /**
@@ -91,5 +78,20 @@ export const viewCourse = (data, videoId, history) => {
     history.push("/course");
 
     dispatch(progressVisibleType(false));
+  };
+};
+
+/**
+ * Enroll course
+ *
+ * @param {data} data
+ * @param {history} history
+ */
+export const enroll = (data, history) => {
+  return async (dispatch) => {
+    try {
+    } catch (error) {
+    } finally {
+    }
   };
 };

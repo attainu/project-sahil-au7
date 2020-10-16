@@ -1,9 +1,7 @@
-export const progressVisibleType = (data) => {
-  return {
-    type: "VISIBLITY",
-    payload: data,
-  };
-};
+import {
+    progressVisibleType,
+  } from "../actionType";
+  
 
 /**
  * Progress bar visible
