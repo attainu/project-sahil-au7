@@ -46,12 +46,17 @@ const courseReducer = (state = initialState, action) => {
         notes: action.payload,
       };
 
-    case "SAVE_NOTE":
+    case "SAVE_NOTES":
       return {
         ...state,
         notes: action.payload,
       };
 
+    case "GET_NOTES":
+      return {
+        ...state,
+        notes: action.payload,
+      };
     default:
       return state;
   }

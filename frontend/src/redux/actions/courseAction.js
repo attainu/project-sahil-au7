@@ -164,6 +164,7 @@ export const myCourses = (history) => {
  * @param {history} history
  */
 export const getNotes = (id, history) => {
+  console.log(id);
   return async (dispatch) => {
     try {
       dispatch(progressVisibleType(true));
@@ -194,12 +195,13 @@ export const updateNotes = (notes, id, history) => {
 
       const {
         data,
-      } = await axios.post(
+      } = await axios.patch(
         `https://educate-india.herokuapp.com/user/course/notes/${id}`,
         { text: notes }
       );
 
       console.log(data)
+
       dispatch(saveNotesType(data));
     } catch (error) {
       console.log(error);
