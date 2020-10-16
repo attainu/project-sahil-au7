@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-
+import React from "react";
 import MediaCard1 from "./MediaCard1";
+
 
 export default function HorizontalList() {
   return (

@@ -1,15 +1,5 @@
 import axios from "axios";
-import {
-  getCourseDetailsType,
-  getCoursesType,
-  viewCourseType,
-  progressVisibleType,
-  enrollType,
-  deleteCourseType,
-  myCoursesType,
-  getNotesType,
-  saveNotesType,
-} from "../actionType";
+import { deleteCourseType, enrollType, getCourseDetailsType, getCoursesType, getNotesType, myCoursesType, progressVisibleType, saveNotesType, viewCourseType } from "../actionType";
 import process from "../utils/processUtil";
 
 /**

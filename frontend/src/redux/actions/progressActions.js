@@ -1,6 +1,4 @@
-import {
-    progressVisibleType,
-  } from "../actionType";
+import { progressVisibleType } from "../actionType";
   
 
 /**

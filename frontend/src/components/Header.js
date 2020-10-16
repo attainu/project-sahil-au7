@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Alert from "./Alert";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -36,12 +37,14 @@ export default function Header() {
 
           <div className={classes.grow} />
           {progressBar.isVisible}
+          {/* {error()} */}
           {authComponents(progressBar.isVisible)}
           {link("all-courses", "All Courses")}
           {link("my-courses", "My Courses")}
         </Toolbar>
       </AppBar>
       <div>{progressBarComponent(progressBar.isVisible)}</div>
+      <Alert />
     </div>
   );
 }
@@ -82,4 +85,12 @@ function authComponents(isVisible) {
   } else {
     return link("logout", "Logout");
   }
+}
+
+/**
+ * Error
+ */
+function error(isVisible) {
+  if (isVisible) return <Alert />;
+  else return <div></div>;
 }

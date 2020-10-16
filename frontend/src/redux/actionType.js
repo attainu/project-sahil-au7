@@ -72,6 +72,19 @@ export const progressVisibleType = (data) => {
 };
 
 /**
+ * Error
+ *
+ * @param {visibility} isVisible
+ * @param {message} message
+ */
+export const errorType = (message) => {
+  return {
+    type: "ERROR",
+    payload: message,
+  };
+};
+
+/**
  * Enroll course
  *
  * @param {data} data
@@ -121,8 +134,8 @@ export const getNotesType = (data) => {
 
 /**
  * Save notes
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  */
 export const saveNotesType = (data) => {
   return {

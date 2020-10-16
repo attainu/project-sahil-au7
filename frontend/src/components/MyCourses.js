@@ -1,10 +1,9 @@
-import React, { Component, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { getCourses, myCourses } from "../redux/actions/courseAction";
-import Card from "../components/MediaCard1";
 import { Grid } from "@material-ui/core";
-import { getCourseDetails } from "../redux/actions/courseAction";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Card from "../components/MediaCard1";
+import { getCourseDetails, myCourses } from "../redux/actions/courseAction";
 
 export default function MyCourses() {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ export default function MyCourses() {
    */
   useEffect(() => {
     dispatch(myCourses(history));
-  }, []);
+  });
 
   /**
    * On course click

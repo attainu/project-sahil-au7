@@ -1,11 +1,9 @@
-import React, { Component, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { getCourses } from "../redux/actions/courseAction";
-import Card from "../components/MediaCard1";
 import { Grid } from "@material-ui/core";
-import { getCourseDetails } from "../redux/actions/courseAction";
-import { isVisible } from "../redux/actions/progressActions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Card from "../components/MediaCard1";
+import { getCourseDetails, getCourses } from "../redux/actions/courseAction";
 
 export default function AllCourses() {
   const dispatch = useDispatch();
@@ -17,7 +15,7 @@ export default function AllCourses() {
    */
   useEffect(() => {
     dispatch(getCourses(history));
-  }, []);
+  });
 
   /**
    * On course click

@@ -1,8 +1,7 @@
-import React from "react";
-import { userLogout } from "../redux/actions/userAction";
-import { useHistory, Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { userLogout } from "../redux/actions/userAction";
 
 export default function Login() {
 

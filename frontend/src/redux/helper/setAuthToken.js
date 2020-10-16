@@ -21,3 +21,4 @@ const isAuthToken = () => {
 };
 
 export { setAuthToken, isAuthToken, axios };
+

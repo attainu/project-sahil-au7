@@ -1,7 +1,12 @@
 import axios from "axios";
-import { setAuthToken } from "../helper/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { progressVisibleType, loginUser, isAuthenticated } from "../actionType";
+import {
+  isAuthenticated,
+  loginUser,
+  progressVisibleType,
+  errorType,
+} from "../actionType";
+import { setAuthToken } from "../helper/setAuthToken";
 
 /**
  * User register
@@ -35,6 +40,7 @@ export const userRegister = (userRegisterCredentials, history) => {
       history.push("/all-courses");
     } catch (err) {
       console.log(err);
+      dispatch(errorType(err.message));
     } finally {
       dispatch(progressVisibleType(false));
     }

@@ -1,4 +1,3 @@
-import { progressVisibleType } from "../actionType";
 
 /**
  * This utils function wraps the process in a try catch block

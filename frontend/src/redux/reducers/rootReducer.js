@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer";
-import errorReducer from "./errorReducer";
 import coursesReducer from "./coursesReducer";
+import errorReducer from "./errorReducer";
 import progressReducer from "./progressReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
   userRoot: userReducer,

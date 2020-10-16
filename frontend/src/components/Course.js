@@ -1,19 +1,13 @@
-import React, { Component, useEffect } from "react";
-import TextareaAutosize from "react-textarea-autosize";
 import { Grid } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
-import TextField from "@material-ui/core/TextField";
-import { useDispatch, useSelector } from "react-redux";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getNotes, updateNotes } from "../redux/actions/courseAction";
-import { useHistory, Link } from "react-router-dom";
-import { useState } from "react";
-
 import Player from "./Player";
+
 
 export default function Course() {
   const dispatch = useDispatch();
@@ -46,7 +40,7 @@ export default function Course() {
    */
   useEffect(() => {
     dispatch(getNotes(store.viewCourse._id, history));
-  }, []);
+  });
 
   /**
    * Save notes
