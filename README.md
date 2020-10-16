@@ -1,8 +1,3 @@
-## Documentation
-
-Detailed documentation can be found here :
-**[Sisyphus - A Hyperlocal Marketplace](https://documenter.getpostman.com/view/5263403/T17CDVqJ)**
-
 # EDUCATE INDIA
 
 What we are trying to build?
